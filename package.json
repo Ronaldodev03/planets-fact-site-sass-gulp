@@ -1,0 +1,27 @@
+{
+  "name": "planets-fact-site",
+  "version": "1.0.0",
+  "description": "![Design preview for the Planets fact site coding challenge](./preview.jpg)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.4.31",
+    "sass": "^1.69.4"
+  },
+  "browserslist": [
+    "last 1 version",
+    ">1%"
+  ]
+}

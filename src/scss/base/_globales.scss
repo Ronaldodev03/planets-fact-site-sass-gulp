@@ -1,0 +1,135 @@
+@use "../utils/breakpoints" as m;
+@use "../utils" as f;
+
+/* ------------------- */
+/*--- custom font   ---*/
+/* ------------------- */
+@font-face {
+  font-family: Spartan;
+  src: url(/fonts/Spartan-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ------------------- */
+/* custom properties   */
+/* ------------------- */
+:root {
+  /* padding-x para navbar for container en rem */
+  --p-x-n: 1.875rem;
+  @include m.breakpoint(tablet) {
+    --p-x-n: 3.125rem;
+  }
+  @include m.breakpoint(desktop) {
+    --p-x-n: 1.5625rem;
+  }
+
+  /* padding-x for container en rem */
+  --p-x: 1.875rem;
+  @include m.breakpoint(tablet) {
+    --p-x: 2.5rem;
+  }
+  @include m.breakpoint(desktop) {
+    --p-x: 6.25rem;
+  }
+  @include m.breakpoint(large) {
+    --p-x: 10.3125rem;
+  }
+
+  /* colors */
+  --primary-color: 240 67% 8%;
+  --light-color: 0 0% 100%;
+  --planet-color: 194 48% 49%;
+  --color-dot-planet: #419ebb;
+
+  /* fonts */
+  --main-font: Spartan;
+  --secondary-font: Antonio;
+}
+
+/* ------------------- */
+/* reset               */
+/* ------------------- */
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+body {
+  font-size: 100%;
+  font-family: var(--main-font), sans-serif;
+  color: hsl(var(--light-color));
+  background: hsl(var(--primary-color));
+  margin: 0;
+  padding: 0;
+  font-family: "Spartan-Regular";
+  font-style: normal;
+  line-height: normal;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  overflow-y: scroll;
+  height: min(100vh, f.rem(1024));
+  @include m.breakpoint(tablet) {
+    min-height: 100vh;
+  }
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}

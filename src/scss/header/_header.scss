@@ -1,0 +1,80 @@
+@use "../utils/" as u;
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid hsl(0 0% 100%/0.2);
+  max-width: u.rem(1440); //max-w for the border-b
+  margin-inline: auto; // centering the boder-b
+
+  &__primary-nav {
+    justify-content: space-between;
+    align-items: center;
+    @include u.breakpoint(tablet) {
+      flex-direction: column;
+      --gap: 0;
+    }
+    @include u.breakpoint(desktop) {
+      flex-direction: row;
+    }
+  }
+
+  &__title {
+    /* font */
+    font-family: var(--secondary-font);
+    font-size: u.rem(28);
+    font-weight: 400;
+    letter-spacing: u.rem(-1.05);
+    z-index: 2000;
+    padding-top: u.rem(16);
+    padding-bottom: u.rem(16);
+    @include u.breakpoint(tablet) {
+      padding-top: u.rem(32);
+      padding-bottom: 0;
+    }
+    @include u.breakpoint(desktop) {
+      padding-top: 0;
+    }
+  }
+
+  &__ul {
+    flex-direction: column;
+    --gap: 0;
+    @include u.breakpoint(tablet) {
+      --upline-gap: 1.875rem; //30px
+      --gap: 2.0625rem; //33px
+      --upline-gap: 2.4375rem; //39px
+      flex-direction: row;
+    }
+    @include u.breakpoint(desktop) {
+      --upline-gap: 1.875rem; //30px
+      /*margin for matching el design */
+      margin-right: u.rem(10);
+    }
+    @include u.breakpoint-down(desktop) {
+      width: 100%;
+    }
+    li {
+      /* font */
+      color: hsl(var(--light-color));
+      font-family: var(--main-font);
+      font-size: u.rem(15);
+      font-weight: 700;
+      line-height: 25px;
+      letter-spacing: u.rem(1.364);
+      text-align: start;
+      border-bottom: u.rem(1) solid hsl(var(--light-color) / 0.1);
+      @include u.breakpoint(tablet) {
+        font-size: u.rem(11);
+        letter-spacing: u.rem(1);
+        border-bottom: 0;
+        text-align: center;
+      }
+      @include u.breakpoint-down(tablet) {
+        align-items: center;
+      }
+      @include u.breakpoint-down(desktop) {
+        flex: 1;
+      }
+    }
+  }
+}

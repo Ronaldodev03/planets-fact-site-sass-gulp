@@ -1,0 +1,306 @@
+@use "../utils/" as u;
+.content {
+  display: grid;
+  grid-template-areas:
+    "m m m m"
+    "i i i i"
+    "a a a a";
+  grid-template-rows: 0.75fr min-content min-content;
+  @include u.breakpoint(tablet) {
+    padding-top: u.rem(50); /* for matching the design */
+    column-gap: 0;
+    grid-template-areas:
+      "i i i i"
+      "i i i i"
+      "m m m m"
+      "m m m m"
+      "a a a a";
+    grid-template-rows: auto auto;
+  }
+  @include u.breakpoint(desktop) {
+    grid-template-areas:
+      "i i i i m m"
+      "i i i i m m"
+      "i i i i m m"
+      "i i i i m m"
+      "a a a a a a";
+    grid-template-columns: repeat(6, 1fr); /* Define 5 columnas iguales */
+    grid-template-rows: repeat(5, 1fr); /* Define 4 filas iguales */
+  }
+  @include u.breakpoint(large) {
+    column-gap: u.rem(34);
+  }
+
+  &__image {
+    grid-area: i;
+    place-self: center;
+    @include u.breakpoint-down(tablet) {
+      display: none;
+    }
+    @include u.breakpoint(tablet) {
+      place-self: center;
+      margin-inline: auto;
+      padding-top: u.rem(85); /* for matching the design */
+      padding-bottom: u.rem(147);
+    }
+    @include u.breakpoint(desktop) {
+      margin-inline: 0;
+      padding-top: 0;
+      padding-right: u.rem(100); /* for matching the design */
+      padding-top: u.rem(20); /* for matching the design */
+    }
+    img {
+      margin-inline: auto;
+      width: 38.3%;
+      height: auto;
+      @include u.breakpoint(tablet) {
+        width: 63.5%;
+        height: auto;
+      }
+      @include u.breakpoint(desktop) {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .main {
+    width: 100%;
+    grid-area: m;
+    display: flex;
+    flex-direction: column;
+    gap: u.rem(69);
+    @include u.breakpoint(tablet) {
+      place-self: end;
+      flex-direction: row;
+    }
+    @include u.breakpoint(desktop) {
+      place-self: center;
+      flex-direction: column;
+      gap: u.rem(40);
+      padding-bottom: u.rem(30); //for matching el design
+    }
+    @include u.breakpoint-down(tablet) {
+      place-self: end;
+    }
+    @include u.breakpoint-down(desktop) {
+      align-items: center;
+    }
+
+    &__information {
+      span {
+        font-size: u.rem(12);
+        line-height: u.rem(25);
+        color: hsl(var(--light-color) / 0.5);
+        margin-top: u.rem(32);
+        margin-bottom: u.rem(28);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: u.rem(5);
+        a {
+          color: hsl(var(--light-color) / 0.5);
+          text-decoration: underline;
+          font-weight: 700;
+        }
+        img {
+          display: inline-block;
+        }
+        @include u.breakpoint(tablet) {
+          margin-bottom: 0;
+          justify-content: start;
+        }
+        @include u.breakpoint(desktop) {
+          margin-top: u.rem(25);
+        }
+      }
+      @include u.breakpoint-down(tablet) {
+        order: 3;
+      }
+    }
+
+    &__title {
+      /* font */
+      text-align: center;
+      font-family: var(--secondary-font);
+      font-size: u.rem(40);
+      font-weight: 400;
+      margin-bottom: u.rem(16);
+      @include u.breakpoint(tablet) {
+        text-align: left;
+        font-size: u.rem(48);
+        margin-bottom: u.rem(25);
+      }
+      @include u.breakpoint(desktop) {
+        font-size: u.rem(80);
+      }
+    }
+
+    &__description {
+      /* font */
+      text-align: center;
+      font-family: var(--main-font);
+      font-size: u.rem(11);
+      font-weight: 400;
+      line-height: u.rem(22);
+      @include u.breakpoint(tablet) {
+        text-align: left;
+        max-width: u.rem(340);
+      }
+      @include u.breakpoint(desktop) {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: u.rem(25);
+      }
+    }
+
+    &__tabs {
+      flex: 1;
+      order: 1;
+      display: flex;
+      align-items: center;
+      @include u.breakpoint(tablet) {
+        display: block;
+      }
+      @include u.breakpoint-down(tablet) {
+        position: relative;
+        gap: u.rem(43);
+      }
+    }
+
+    .tab {
+      cursor: pointer;
+      max-width: u.rem(340);
+      margin-left: auto;
+      @include u.breakpoint(desktop) {
+        margin-left: 0;
+        max-width: 100%;
+      }
+      @include u.breakpoint-down(tablet) {
+        --upline-gap: 1.25rem; //20px
+        padding-bottom: u.rem(20);
+      }
+      p {
+        font-family: var(--main-font);
+        font-size: u.rem(9);
+        font-weight: 700;
+        letter-spacing: u.rem(1.929);
+        @include u.breakpoint(tablet) {
+          font-size: u.rem(11);
+          padding: u.rem(8) u.rem(20);
+          line-height: u.rem(25);
+          border: u.rem(1) solid hsl(var(--light-color) / 0.2);
+        }
+        @include u.breakpoint(desktop) {
+          font-size: u.rem(12);
+          font-weight: 700;
+          letter-spacing: u.rem(2.571);
+        }
+
+        .opacity {
+          opacity: 0.5;
+          @include u.breakpoint(tablet) {
+            margin-right: u.rem(14);
+          }
+          @include u.breakpoint(desktop) {
+            margin-right: u.rem(28);
+          }
+          @include u.breakpoint-down(tablet) {
+            display: none;
+          }
+        }
+      }
+
+      &--active {
+        @include u.breakpoint(tablet) {
+          background: hsl(var(--planet-color));
+          &:hover {
+            background: hsl(var(--planet-color));
+          }
+        }
+      }
+    }
+
+    .image-mobile {
+      order: 2;
+      padding: u.rem(25) 0;
+      margin-inline: auto;
+      //   width: 38.3%; // la imagen crece responsive al % del width
+      //   height: auto;
+      @include u.breakpoint(tablet) {
+        display: none;
+      }
+      img {
+        margin-inline: auto;
+        width: 38.3%; //la imagen se mantiene al 38.3% del width seteado en el html
+      }
+    }
+  }
+
+  .facts {
+    width: 100%;
+    place-self: center;
+    grid-area: a;
+    margin-bottom: u.rem(40);
+    flex-direction: column;
+    @include u.breakpoint(tablet) {
+      --gap: 0.6875rem; //11px
+      flex-direction: row;
+      padding-top: u.rem(27);
+    }
+    @include u.breakpoint(desktop) {
+      --gap: 1.875rem; //30px
+      padding-top: u.rem(0);
+    }
+
+    div {
+      border: u.rem(1) solid hsl(var(--light-color) / 0.2);
+      flex: 1;
+      padding: u.rem(9) u.rem(24);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include u.breakpoint(tablet) {
+        padding: u.rem(15);
+        display: block;
+      }
+      @include u.breakpoint(desktop) {
+        padding: u.rem(20) 0 u.rem(27) u.rem(23); //for matching the design
+      }
+    }
+
+    &__title {
+      /* font */
+      font-family: var(--main-font);
+      font-weight: 700;
+      opacity: 0.5;
+      font-size: u.rem(8);
+      line-height: u.rem(16);
+      letter-spacing: u.rem(0.727);
+      @include u.breakpoint(tablet) {
+        font-size: u.rem(11);
+        line-height: u.rem(25);
+        letter-spacing: u.rem(1);
+        margin-bottom: u.rem(6);
+      }
+    }
+
+    &__data {
+      /* font */
+      font-family: var(--secondary-font);
+      font-weight: 400;
+      font-size: u.rem(20);
+      letter-spacing: u.rem(-0.75);
+      @include u.breakpoint(tablet) {
+        text-align: left;
+        white-space: nowrap;
+        font-size: u.rem(24);
+        letter-spacing: u.rem(-0.9);
+      }
+      @include u.breakpoint(desktop) {
+        font-size: u.rem(40);
+        letter-spacing: u.rem(-1.5);
+      }
+    }
+  }
+}

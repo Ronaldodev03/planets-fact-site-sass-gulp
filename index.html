@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="This is a responsive web page created from a Figma design using HTML, SASS, and Gulp."
+    />
+    <!-- graph -->
+    <meta property="og:title" content="Frontend Mentor | Planets fact site" />
+    <meta
+      property="og:description"
+      content="This is a responsive web page created from a Figma design using HTML, SASS, and Gulp."
+    />
+    <meta property="og:image" content="planets-fact-site-seo.png" />
+    <meta property="og:image:alt" content="image of Planets Fact Site" />
+
+    <!-- links -->
+    <link rel="stylesheet" href="./fonts/Spartan-Regular.ttf" type="font/ttf" />
+    <link rel="stylesheet" href="./fonts/Spartan-Bold.ttf" type="font/ttf" />
+    <link rel="stylesheet" href="/fonts/Antonio-Regular.ttf" type="font/ttf" />
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="./build/css/app.css" />
+
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./buld/img/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Planets fact site</title>
+  </head>
+  <body class="bg">
+    <header class="header">
+      <nav class="header__primary-nav container-nav flex">
+        <h2 class="header__title">THE PLANETS</h2>
+        <!-- button for toggle mobile menu -->
+        <button
+          class="mobile-nav-toggle"
+          aria-controls="primary-navigation"
+          style="color: white"
+          aria-expanded="false"
+          aria-label="menu-button"
+        ></button>
+        <!-- ul/li for the menu -->
+        <ul
+          data-visible="false"
+          class="header__ul line-indicators primary-navigation flex"
+        >
+          <li class="nav-li flex line-indicators--active">
+            <div class="dot-color-mercury hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">MERCURY</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+          <li class="nav-li flex">
+            <div class="dot-color-venus hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">VENUS</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+          <li class="nav-li flex">
+            <div class="dot-color-earth hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">EARTH</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+          <li class="nav-li flex">
+            <div class="dot-color-mars hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">MARS</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+          <li class="nav-li flex">
+            <div class="dot-color-jupiter hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">JUPITER</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+          <li class="nav-li flex">
+            <div class="dot-color-saturn hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">SATURN</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+          <li class="nav-li flex">
+            <div class="dot-color-uranus hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">URANUS</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+          <li class="nav-li flex">
+            <div class="dot-color-neptune hidden-tablet"></div>
+            <span class="pl-25-mobile flex-1">NEPTUNE</span>
+            <img
+              src="./build/img/icon-chevron.svg"
+              alt="arrow"
+              width="4"
+              height="8"
+              class="hidden-tablet"
+            />
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- line for tabs in mobile -->
+    <div class="line"></div>
+
+    <!-- content of webpage -->
+    <div class="content container">
+      <!-- planet image for desktop/ inside main there is another for mobile -->
+      <div class="content__image relative">
+        <img
+          id="image"
+          src="./build/img/planet-mercury.svg"
+          alt="icon-planet"
+          width="290"
+          height="290"
+        />
+        <div class="image-geology">
+          <img
+            id="image-geology"
+            src="./build/img/geology-mercury.png"
+            alt="image-geology"
+            width="168"
+            height="165"
+            class="hidden"
+          />
+        </div>
+      </div>
+
+      <main class="main relative">
+        <!-- title/description of planet -->
+        <section class="main__information">
+          <h1 id="name" class="main__title uppercase">Mercury</h1>
+          <p id="content" class="main__description">
+            Mercury is the smallest planet in the Solar System and the closest
+            to the Sun. Its orbit around the Sun takes 87.97 Earth days, the
+            shortest of all the Sun's planets. Mercury is one of four
+            terrestrial planets in the Solar System, and is a rocky body like
+            Earth.
+          </p>
+          <span class="block"
+            >Source :
+            <a
+              target="_blank"
+              id="source"
+              href="https://en.wikipedia.org/wiki/Mercury_(planet)"
+              >Wikipedia</a
+            >
+            <img
+              src="./build/img/icon-source.svg"
+              alt="icon-external-source"
+              width="12"
+              height="12"
+            />
+          </span>
+        </section>
+
+        <!-- tabs: overview/structure/geology -->
+        <div class="main__tabs flow animation line-tabs-indicators">
+          <div
+            id="overview"
+            class="tab uppercase tab--active line-tabs-indicators--active"
+          >
+            <p class="no-wrap"><span class="opacity">01</span> OVERVIEW</p>
+          </div>
+
+          <div id="structure" class="tab uppercase">
+            <p class="no-wrap">
+              <span class="opacity">02</span
+              ><span class="hidden-mobile">Internal</span> Structure
+            </p>
+          </div>
+          <div id="geology" class="tab uppercase">
+            <p class="no-wrap">
+              <span class="opacity">03</span>
+              <span class="hidden-mobile">Surface</span> Geology
+            </p>
+          </div>
+        </div>
+
+        <!-- planet image for mobile -->
+        <div class="image-mobile">
+          <img
+            id="image-mobile"
+            src="./build/img/planet-mercury.svg"
+            alt="icon-planet"
+            width="290"
+            height="290"
+          />
+        </div>
+        <!-- additional image for mobile when tab "geology" is clicked -->
+        <div class="image-geology-mobile">
+          <img
+            id="image-geology-mobile"
+            src="./build/img/geology-mercury.png"
+            alt="image-geology"
+            width="168"
+            height="165"
+            class="hidden"
+          />
+        </div>
+      </main>
+
+      <!-- facts-cards -->
+      <aside class="facts flex">
+        <!-- facts-card -->
+        <div class="uppercase">
+          <h2 class="facts__title">Rotation Time</h2>
+          <p id="rotation" class="facts__data">58.6 days</p>
+        </div>
+        <!-- facts-card -->
+        <div class="uppercase">
+          <h2 class="facts__title">revolution</h2>
+          <p id="revolution" class="facts__data">87.97 Days</p>
+        </div>
+        <!-- facts-card -->
+        <div class="uppercase">
+          <h2 class="facts__title">radius</h2>
+          <p id="radius" class="facts__data">2,439.7 KM</p>
+        </div>
+        <!-- facts-card -->
+        <div class="uppercase">
+          <h2 class="facts__title">average temp.</h2>
+          <p id="temperature" class="facts__data">430°c</p>
+        </div>
+      </aside>
+    </div>
+    <!-- javascript -->
+    <script src="index.js"></script>
+  </body>
+</html>

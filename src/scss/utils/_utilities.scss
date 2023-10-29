@@ -1,0 +1,365 @@
+@use "functions" as f;
+@use "breakpoints" as m;
+@use "colors" as c;
+
+/* ----------------------------------------------- */
+/*------------------   utils    ------------------ */
+/* ----------------------------------------------- */
+
+.container-nav {
+  margin-inline: auto;
+  width: min(100% - calc(2 * var(--p-x-n)), f.rem(1415));
+}
+
+.container {
+  margin-inline: auto;
+  width: min(100% - calc(2 * var(--p-x)), f.rem(1110));
+}
+
+.bg {
+  background-image: url(../img/background-stars.svg);
+  background-position: center;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.mt-50 {
+  margin-top: f.rem(55);
+}
+
+.mb-50 {
+  margin-bottom: f.rem(55);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.block {
+  display: block;
+}
+
+.hidden-mobile {
+  @include m.breakpoint-down(tablet) {
+    display: none;
+  }
+}
+
+.hidden-tablet {
+  @include m.breakpoint(tablet) {
+    display: none;
+  }
+}
+
+.flow > *:where(:not(:first-child)) {
+  @include m.breakpoint(tablet) {
+    margin-top: var(--flow-space, 1rem);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.pl-25-mobile {
+  @include m.breakpoint-down(tablet) {
+    padding-left: f.rem(25);
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.relative {
+  position: relative;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.image-geology {
+  position: absolute;
+  @include m.breakpoint(tablet) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 15%);
+  }
+  @include m.breakpoint(desktop) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-81%, 15%);
+  }
+  width: f.rem(158);
+  height: auto;
+  img {
+    margin-inline: auto;
+    width: 38.3%;
+    height: auto;
+    @include m.breakpoint(tablet) {
+      width: 63.5%;
+      height: auto;
+    }
+    @include m.breakpoint(desktop) {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.image-geology-mobile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -130%);
+  width: f.rem(158);
+  height: auto;
+  img {
+    margin-inline: auto;
+    width: 38.3%;
+    height: auto;
+  }
+  @include m.breakpoint(tablet) {
+    display: none;
+  }
+}
+
+/* ----------------------------------------------- */
+/*------------------ components ------------------*/
+/* ----------------------------------------------- */
+
+/* ---------    MENU    ------- */
+
+.primary-navigation {
+  padding: 0;
+  margin: 0;
+  @include m.breakpoint-down(tablet) {
+    background: hsl(var(--primary-color));
+    //--upline-gap: 10rem;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    padding: f.rem(92) var(--p-x-n) 100% var(--p-x-n);
+    margin: 0;
+    transition: 500ms;
+    transform: translateX(100%);
+
+    &[data-visible="true"] {
+      transition: 500ms;
+      transform: translateX(0);
+      position: absolute;
+      height: min-content;
+    }
+  }
+}
+
+.mobile-nav-toggle {
+  display: none;
+  cursor: pointer;
+  @include m.breakpoint-down(tablet) {
+    display: block;
+
+    z-index: 2000;
+    background: transparent;
+    background-image: url(../img/icon-hamburger.svg);
+    background-repeat: no-repeat;
+    width: f.rem(24);
+    height: f.rem(17);
+    aspect-ratio: 1;
+    border: 0;
+
+    &[aria-expanded="true"] {
+      opacity: 0.25;
+    }
+  }
+}
+
+// dots menu-mobile
+.dot-color-mercury {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "MERCURY");
+}
+.dot-color-venus {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "VENUS");
+}
+.dot-color-earth {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "EARTH");
+}
+.dot-color-mars {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "MARS");
+}
+.dot-color-jupiter {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "JUPITER");
+}
+.dot-color-saturn {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "SATURN");
+}
+.dot-color-uranus {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "URANUS");
+}
+.dot-color-neptune {
+  width: f.rem(20);
+  height: f.rem(20);
+  border-radius: 50%;
+  background: map-get(c.$colors, "NEPTUNE");
+}
+
+/*------------------ DOWNLINE/UPLINE menu ------------------*/
+
+.line-indicators > * {
+  cursor: pointer;
+  padding: f.rem(20) 0;
+  @include m.breakpoint(tablet) {
+    padding: var(--upline-gap, 1rem) 0 f.rem(27) 0;
+    border: 0;
+  }
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-bottom: f.rem(4) solid hsl(var(--planet-color) / 0.5);
+    @include m.breakpoint(desktop) {
+      border-top: f.rem(4) solid hsl(var(--planet-color) / 0.5);
+      border-bottom: 0;
+    }
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    transition: transform 0.3s ease, width 0.3s ease;
+    z-index: -1;
+  }
+
+  &*:hover::before {
+    transform: scaleX(1);
+    width: 100%;
+  }
+}
+
+.line-indicators--active {
+  &::before {
+    width: 100%;
+    border-bottom: f.rem(4) solid hsl(var(--planet-color) / 1);
+    @include m.breakpoint(desktop) {
+      border-top: f.rem(4) solid hsl(var(--planet-color) / 1);
+      border-bottom: 0;
+    }
+    transform: scaleX(1);
+  }
+}
+
+/*------------------ DOWNLINE tabs ------------------*/
+
+.line-tabs-indicators > * {
+  @include m.breakpoint-down(tablet) {
+    cursor: pointer;
+    padding: var(--upline-gap, 1rem) 0 f.rem(27) 0;
+    border: 0;
+
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      border-bottom: f.rem(4) solid hsl(var(--planet-color) / 0.5);
+      @include m.breakpoint(desktop) {
+        border-top: f.rem(4) solid hsl(var(--planet-color) / 0.5);
+        border-bottom: 0;
+      }
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      transition: transform 0.3s ease, width 0.3s ease;
+      z-index: -1;
+    }
+
+    &*:hover::before {
+      transform: scaleX(1);
+      width: 100%;
+    }
+  }
+}
+
+.line-tabs-indicators--active {
+  @include m.breakpoint-down(tablet) {
+    &::before {
+      width: 100%;
+      border-bottom: f.rem(4) solid hsl(var(--planet-color) / 1);
+      @include m.breakpoint(desktop) {
+        border-top: f.rem(4) solid hsl(var(--planet-color) / 1);
+        border-bottom: 0;
+      }
+      transform: scaleX(1);
+    }
+  }
+}
+
+/*------------------ LINE ------------------*/
+
+.line {
+  position: absolute;
+  top: f.rem(119.2);
+  border-bottom: f.rem(1) solid hsl(var(--light-color) / 0.2);
+  width: 100%;
+  @include m.breakpoint(tablet) {
+    display: none;
+  }
+}
+
+/*------------------ ANIMATION bg-tab ------------------*/
+
+.animation > * {
+  @include m.breakpoint(tablet) {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: hsl(var(--planet-color) / 0.2);
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      transition: transform 0.3s ease, width 0.3s ease;
+      z-index: -1;
+    }
+
+    &*:hover::before {
+      transform: scaleX(1);
+      width: 100%;
+    }
+  }
+}

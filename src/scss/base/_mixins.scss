@@ -1,0 +1,17 @@
+@mixin phone {
+  @media (min-width: var(--phone)) {
+    @content; //con esta directiva el mixin tomara todo el contenido que se le inyecte y lo compilara.
+  }
+}
+
+@mixin tablet {
+  @media (min-width: var(--tablet)) {
+    @content; //con esta directiva el mixin tomara todo el contenido que se le inyecte y lo compilara.
+  }
+}
+
+@mixin desktop {
+  @media (min-width: var(--desktop)) {
+    @content; //con esta directiva el mixin tomara todo el contenido que se le inyecte y lo compilara.
+  }
+}
