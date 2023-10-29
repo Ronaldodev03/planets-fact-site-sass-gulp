@@ -139,20 +139,19 @@
   margin: 0;
   @include m.breakpoint-down(tablet) {
     background: hsl(var(--primary-color));
-    //--upline-gap: 10rem;
     position: fixed;
     z-index: 1000;
     inset: 0;
-    padding: f.rem(92) var(--p-x-n) 100% var(--p-x-n);
+    left: 100%;
+    padding: f.rem(92) var(--p-x-n) f.rem(1000) var(--p-x-n);
     margin: 0;
     transition: 500ms;
-    transform: translateX(100%);
 
     &[data-visible="true"] {
+      left: 0;
       transition: 500ms;
-      transform: translateX(0);
       position: absolute;
-      height: min-content;
+      min-height: 100vh;
     }
   }
 }
@@ -162,7 +161,6 @@
   cursor: pointer;
   @include m.breakpoint-down(tablet) {
     display: block;
-
     z-index: 2000;
     background: transparent;
     background-image: url(../img/icon-hamburger.svg);
